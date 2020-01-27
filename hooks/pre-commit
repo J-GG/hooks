@@ -62,7 +62,7 @@ function main {
     if [ $? -ne 0 ]; then
 	    EXIT_SUCCESS=false
     fi
-
+	echo
     echo "= PMD ="
     java -classpath "$HOOKS_DATA_PATH/pmd-bin-$PMD_VERSION"'/lib/*' net.sourceforge.pmd.PMD -format text -rulesets "$HOOKS_DATA_PATH/$PMD_CONF_FILE" -dir src -cache $HOOKS_DATA_PATH/$PMD_CACHE
     if [ $? -ne 0 ]; then
@@ -75,7 +75,9 @@ main
 tty -s && stty echo
 
 if $EXIT_SUCCESS; then
+	echo
     echo "No CheckStyle or PMD error"
+	echo
 else
     echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     echo "!  Can't commit. A CheckStyle or PMD error prevents it !"
