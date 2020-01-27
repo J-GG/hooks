@@ -1,10 +1,11 @@
 #!/bin/sh
 
-####################################################
-# Download and install the hooks for the project.
-####################################################
+#########################################################
+# Download and install the listed hooks for the project #
+#########################################################
 
-REMOTE_HOOKS_PATH=""
+HOOKS=("pre-commit")
+REMOTE_PRE_COMMIT_HOOK_PATH="https://raw.githubusercontent.com/J-GG/hooks/master/hooks/"
 LOCAL_HOOKS_PATH=".git/hooks"
 
 function download {
@@ -24,15 +25,14 @@ function download {
     fi
 }
 
-function main {
-    echo "========================="
-    echo "| Downloading git hooks |"
-    echo "========================="
+echo "========================"
+echo "| Installing git hooks |"
+echo "========================"
+echo
 
-
-    download "$REMOTE_HOOKS_PATH" "$LOCAL_HOOKS_PATH" "Downloading hooks"
-}
-
-tty -s && stty -echo
-main
-tty -s && stty echo
+rm -r "$LOCAL_HOOKS_PATH"
+mkdir "$LOCAL_HOOKS_PATH"
+for HOOK in $HOOKS
+do
+    download "$REMOTE_PRE_COMMIT_HOOK_PATH" "$LOCAL_HOOKS_PATH/$HOOK" "Downloading $HOOK hook"
+done
