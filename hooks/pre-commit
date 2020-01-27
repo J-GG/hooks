@@ -8,7 +8,7 @@ HOOKS_DATA_PATH=".git/hooks-data"
 EXIT_SUCCESS=true
 
 # Checkstyle
-CHECKSTYLE_VERSION="checkstyle-8.28"
+CHECKSTYLE_VERSION="checkstyle-8.29"
 CHECKSTYLE_BIN="$CHECKSTYLE_VERSION-all.jar"
 CHECKSTYLE_URL="https://github.com/checkstyle/checkstyle/releases/download/$CHECKSTYLE_VERSION/$CHECKSTYLE_BIN"
 CHECKSTYLE_CONF_FILE="checkstyle.xml"
