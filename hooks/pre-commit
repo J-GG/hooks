@@ -25,18 +25,18 @@ PMD_CONF_URL="https://raw.githubusercontent.com/J-GG/hooks/master/hooks-data/$PM
 
 function download {
     if [ -f "$2" ]; then
-	return
+		return
     fi
     echo "$3"
     if which curl > /dev/null; then
-	curl -Lk "$1" > "$2"
+		curl -Lk "$1" > "$2"
     elif which wget > /dev/null; then
-	wget "$1" -O "$2"
+		wget "$1" -O "$2"
     else
-	echo "Unable to find a download backend to retrieve the files. Please install curl or wget."
-	exit 1
+		echo "Can't find a command to download the files. Please install curl or wget."
+		exit 1
     fi
-    echo
+	echo
 }
 
 function inflateZip {
@@ -49,7 +49,7 @@ function main {
     echo "================================"
     echo
 
-    mkdir -p .git/hooks-data
+    mkdir -p "$HOOKS_DATA_PATH"
 
     download "$CHECKSTYLE_URL" "$HOOKS_DATA_PATH/$CHECKSTYLE_BIN" "Downloading CheckStyle"
     download "$CHECKSTYLE_CONF_URL" "$HOOKS_DATA_PATH/$CHECKSTYLE_CONF_FILE" "Downloading CheckStyle configuration file"
@@ -58,7 +58,7 @@ function main {
     inflateZip "$HOOKS_DATA_PATH" "$PMD_ARCHIVE"
 
     echo "= CheckStyle ="
-    java -jar "$HOOKS_DATA_PATH/$CHECKSTYLE_BIN" -c "$HOOKS_DATA_PATH/$CHECKSTYLE_CONF" -x "toolbox[\\\/]form" $HOOKS_DATA_PATH/../../
+    java -jar "$HOOKS_DATA_PATH/$CHECKSTYLE_BIN" -c "$HOOKS_DATA_PATH/$CHECKSTYLE_CONF_FILE" -x "toolbox[\\\/]form" $HOOKS_DATA_PATH/../../
     if [ $? -ne 0 ]; then
 	    EXIT_SUCCESS=false
     fi
