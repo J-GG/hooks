@@ -58,7 +58,7 @@ function main {
     inflateZip "$HOOKS_DATA_PATH" "$PMD_ARCHIVE"
 
     echo "= CheckStyle ="
-    java -jar "$HOOKS_DATA_PATH/$CHECKSTYLE_BIN" -c "$HOOKS_DATA_PATH/$CHECKSTYLE_CONF_FILE" -x "toolbox[\\\/]form" $HOOKS_DATA_PATH/../../
+    java -jar "$HOOKS_DATA_PATH/$CHECKSTYLE_BIN" -c "$HOOKS_DATA_PATH/$CHECKSTYLE_CONF_FILE" -x "toolbox[\\\/]form" src
     if [ $? -ne 0 ]; then
 	    EXIT_SUCCESS=false
     fi
