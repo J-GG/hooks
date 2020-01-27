@@ -5,7 +5,7 @@
 #########################################################
 
 HOOKS=("pre-commit")
-REMOTE_PRE_COMMIT_HOOK_PATH="https://raw.githubusercontent.com/J-GG/hooks/master/hooks/"
+REMOTE_PRE_COMMIT_HOOK_PATH="https://raw.githubusercontent.com/J-GG/hooks/master/hooks"
 LOCAL_HOOKS_PATH=".git/hooks"
 
 function download {
@@ -34,5 +34,5 @@ rm -r "$LOCAL_HOOKS_PATH"
 mkdir "$LOCAL_HOOKS_PATH"
 for HOOK in $HOOKS
 do
-    download "$REMOTE_PRE_COMMIT_HOOK_PATH" "$LOCAL_HOOKS_PATH/$HOOK" "Downloading $HOOK hook"
+    download "$REMOTE_PRE_COMMIT_HOOK_PATH/$HOOK" "$LOCAL_HOOKS_PATH/$HOOK" "Downloading $HOOK hook"
 done

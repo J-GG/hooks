@@ -52,7 +52,7 @@ function main {
     mkdir -p .git/hooks-data
 
     download "$CHECKSTYLE_URL" "$HOOKS_DATA_PATH/$CHECKSTYLE_BIN" "Downloading CheckStyle"
-    download "$CHECKSTYLE_CONF_URL" "$HOOKS_DATA_PATH/$HOOKS_DATA_PATH/$CHECKSTYLE_CONF_FILE" "Downloading CheckStyle configuration file"
+    download "$CHECKSTYLE_CONF_URL" "$HOOKS_DATA_PATH/$CHECKSTYLE_CONF_FILE" "Downloading CheckStyle configuration file"
     download "$PMD_URL" "$HOOKS_DATA_PATH/$PMD_ARCHIVE" "Downloadind PMD Archive"
     download "$PMD_CONF_URL" "$HOOKS_DATA_PATH/$PMD_CONF_FILE" "Downloadind PMD Ruleset"
     inflateZip "$HOOKS_DATA_PATH" "$PMD_ARCHIVE"
